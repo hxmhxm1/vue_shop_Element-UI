@@ -68,7 +68,7 @@ export default {
       // console.log(res);
       if (res.meta.status != 200) this.$message.error('数据无法加载');
       this.menulist = res.data;
-      console.log(this.menulist);
+      // console.log(this.menulist);
     },
     togglecollapse() {
       this.iscollapse = !this.iscollapse;

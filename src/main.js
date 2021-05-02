@@ -12,7 +12,7 @@ axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
 Vue.prototype.$http = axios;
 // 在 request 拦截器中，展示进度条 NProgress.start()
 axios.interceptors.request.use(config => {
-  console.log(config)
+  // console.log(config)
   // NProgress.start()
   config.headers.Authorization = window.sessionStorage.getItem('token')
   // 在最后必须 return config
