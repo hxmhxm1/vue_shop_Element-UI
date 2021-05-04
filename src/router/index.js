@@ -16,7 +16,12 @@ const Report = () => import('../components/report/Report.vue')
 
 
 Vue.use(VueRouter)
-
+// 获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+// 修改原型对象上的push方法
+VueRouter.prototype.push = function push(location){
+  return originalPush.call(this,location).catch(err =>err)
+}
   const routes = [
     {
       path:'',
@@ -31,9 +36,8 @@ Vue.use(VueRouter)
       component:home,
       redirect:'/welcom',
       children:[
-        {path:'/welcom',
-      component:Welcom},
-      { path: '/users', component: Users },
+        {path:'/welcom',component:Welcom},
+        {path: '/users', component: Users },
         { path: '/rights', component: Rights },
         { path: '/roles', component: Roles },
         { path: '/categories', component: Cate },
